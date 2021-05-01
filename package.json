@@ -1,6 +1,6 @@
 {
   "name": "cuevana3",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cuevana3 scraper is a content provider of the latest in the world of cinema with sub in Latin Spanish, subtitled and free, in addition to providing different complementary information.",
   "main": "./src/api.js",
   "types": "./types/api.d.ts",
