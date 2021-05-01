@@ -4,7 +4,7 @@
 
   
 <p align="center">
- Cuevana3 scraper is a content provider of the latest in the world of movies and tv show in Latin Spanish, subtitled and free, in addition to providing different complementary information.
+ Cuevana3 scraper is a content provider of the latest in the world of movies and tv show in Latin Spanish dub or subtitled.
 </p>
 
 ![npm](https://img.shields.io/npm/v/npm?style=flat-square) ![GitHub package.json version](https://img.shields.io/github/package-json/v/carlosfdezb/cuevana3?style=flat-square) ![NPM](https://img.shields.io/npm/l/cuevana3?style=flat-square)
