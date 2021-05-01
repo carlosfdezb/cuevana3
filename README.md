@@ -1,6 +1,6 @@
-<!-- <p align="center">
-  <img src="./assets/img/logo.png" alt="Cuevana3 Scraper" style="filter: drop-shadow(0 0 0.75rem black)"/>
-</p> -->
+<p align="center">
+  <img src="./assets/img/logo.png" alt="Cuevana3 Scraper"/>
+</p>
 
   
 <p align="center">
