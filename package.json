@@ -1,0 +1,31 @@
+{
+  "name": "cuevana3",
+  "version": "1.0.1",
+  "description": "Cuevana3 scraper is a content provider of the latest in the world of cinema with sub in Latin Spanish, subtitled and free, in addition to providing different complementary information.",
+  "main": "./src/api.js",
+  "types": "./types/api.d.ts",
+  "scripts": {
+    "dev": "nodemon src/api.js"
+  },
+  "keywords": [
+    "cuevana3-scraper",
+    "cuevana",
+    "cuevana3",
+    "scraper",
+    "cuevana 3"
+  ],
+  "author": "Carlos Fernández <carlosfdezb@gmail.com>",
+  "contributors": [
+    "Carlos Fernández (https://github.com/carlosfdezb)"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.6",
+    "cloudscraper": "^4.6.0",
+    "nodemon": "^2.0.6",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  }
+}
