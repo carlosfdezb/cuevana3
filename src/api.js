@@ -327,26 +327,29 @@ const getLinks = async(id) => {
   const latino = [];
   for(let i = 1; i < 11; i++){
     const url = $(`#OptL${i} > iframe`).attr('data-src');
-    if(url === undefined) {break}
-    latino.push({
-      url: 'https:' + url,
-    })
+    if(url !== undefined) {
+      latino.push({
+        url: 'https:' + url,
+      })
+    }
   }
   const espanol = [];
   for(let i = 1; i < 11; i++){
     const url = $(`#OptE${i} > iframe`).attr('data-src');
-    if(url === undefined) {break}
-    espanol.push({
-      url: 'https:' + url,
-    })
+    if(url !== undefined) {
+      espanol.push({
+        url: 'https:' + url,
+      })
+    }
   }
   const sub = [];
   for(let i = 1; i < 11; i++){
     const url = $(`#OptS${i} > iframe`).attr('data-src');
-    if(url === undefined) {break}
-    sub.push({
-      url: 'https:' + url,
-    })
+    if(url !== undefined) {
+      sub.push({
+        url: 'https:' + url,
+      })
+    }
   }
 
   promises.push({
