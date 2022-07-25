@@ -1,16 +1,17 @@
 const cheerio = require('cheerio');
 const cloudscraper = require('cloudscraper');
-const {BASE_URL, MOVIES, SERIES, GENRES} = require('./util/urls')
+const {BASE_URL, MOVIES, SERIES, GENRES, BASE_URL_EXTENSION} = require('./util/urls')
 
-const getMovies = async(type) =>{
-  const res = await cloudscraper(`${BASE_URL}${MOVIES[type]}` , {method: 'GET'});
+const getMovies = async(type, page = '') =>{
+  const query = type === 0 ? `/page/${page}` : `/page/${page}`;
+  const res = await cloudscraper(`${BASE_URL}${MOVIES[type]}${query}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
-  const url = type > 0 ? '#aa-wp > div > div > main > section' : '#tab-1';
+  const url = '#aa-wp > div > div > main > section';
   $(`${url} > ul > li`).each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.TPost.C > a').attr('href').split('me/')[1];
+    const id = $element.find('div.TPost.C > a').attr('href').split(BASE_URL_EXTENSION)[1];
     const title = $element.find('div.TPost.C > a > h2').text();
     const poster = $element.find('div.TPost.C > a > div > figure > img').attr('data-src');
     const year = $element.find('div.TPost.C > a > div > span.Year').text();
@@ -46,7 +47,7 @@ const getSeries = async(type) =>{
   $(`${SERIES[type]} > ul > li`).each((index , element) =>{
     if (type < 4){
       const $element = $(element);
-      const id = $element.find('div.TPost.C > a').attr('href').split('me/')[1];
+      const id = $element.find('div.TPost.C > a').attr('href').split(BASE_URL_EXTENSION)[1];
       const title = $element.find('div.TPost.C > a > h2').text();
       const poster = $element.find('div.TPost.C > a > div > figure > img').attr('data-src');
       const year = $element.find('div.TPost.C > a > div > span.Year').text();
@@ -71,7 +72,7 @@ const getSeries = async(type) =>{
       });
     }else{
       const $element = $(element);
-      const id = $element.find('article.TPost.C > a').attr('href').split('.me/')[1];
+      const id = $element.find('article.TPost.C > a').attr('href').split('.io/')[1];
       const episode = $element.find('article.TPost.C > a > h2.Title').text();
       const poster = 'https://'+$element.find('article.TPost.C > a > div.Image > figure > img').attr('data-src').split('//')[1];
       
@@ -129,7 +130,7 @@ const getDetail = async(id) => {
       const season = [];
       $(`#season-${i} > li`).each((index , element) =>{
         const $element = $(element);
-        const id = $element.find('article a').attr('href').split('.me/')[1];
+        const id = $element.find('article a').attr('href').split('.io/')[1];
         const episode = $element.find('article a div.Image span.Year').text().split('x')[1];
         const preview = $element.find('article a div.Image figure img').attr('data-src').replace('w185','w500');
         const release = $element.find('article a p').text();
@@ -221,7 +222,7 @@ const getByGenre = async(type, page) => {
 
   $(`#aa-wp > div > div.TpRwCont.cont > main > section > ul > li`).each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.TPost.C > a').attr('href').split('me/')[1];
+    const id = $element.find('div.TPost.C > a').attr('href').split(BASE_URL_EXTENSION)[1];
     const title = $element.find('div.TPost.C > a > h2').text();
     const poster = $element.find('div.TPost.C > a > div > figure > img').attr('data-src');
     const year = $element.find('div.TPost.C > a > div > span.Year').text();
@@ -256,7 +257,7 @@ const getByActor = async(id, page) => {
 
   $(`#aa-wp > div > div.TpRwCont.cont > main > section > ul > li`).each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.TPost.C > a').attr('href').split('me/')[1];
+    const id = $element.find('div.TPost.C > a').attr('href').split(BASE_URL_EXTENSION)[1];
     const title = $element.find('div.TPost.C > a > h2').text();
     const poster = $element.find('div.TPost.C > a > div > figure > img').attr('data-src');
     const year = $element.find('div.TPost.C > a > div > span.Year').text();
@@ -291,7 +292,7 @@ const getSearch = async(query, page) => {
 
   $(`#aa-wp > div > div > main > section > ul > li`).each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.TPost.C > a').attr('href').split('me/')[1];
+    const id = $element.find('div.TPost.C > a').attr('href').split(BASE_URL_EXTENSION)[1];
     const title = $element.find('div.TPost.C > a > h2').text();
     const poster = $element.find('div.TPost.C > a > div > figure > img').attr('data-src');
     const year = $element.find('div.TPost.C > a > div > span.Year').text();
